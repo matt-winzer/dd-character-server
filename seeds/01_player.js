@@ -8,15 +8,12 @@ exports.seed = function(knex, Promise) {
         id: 1,
         username: 'sam',
         email: 'sam@gmail.com',
-        password: bcrypt.hashSync('sammy', 10),
-        bio: 'Sam is the man.'
-
+        password: bcrypt.hashSync('sammy', 10)
       }, {
         id: 2,
         username: 'alex',
         email: 'alex@gmail.com',
-        password: bcrypt.hashSync('alexus', 10),
-        bio: 'Call me Starburns.'
+        password: bcrypt.hashSync('alexus', 10)
       }];
       return knex('player').insert(players);
     });

@@ -6,3 +6,13 @@ body {
 a {
   color: #00B7FF;
 }
+
+button {
+  color: white;
+  background-color: blue;
+}
+
+.thumbs-up {
+  height: 500px;
+  max-width: 100%;
+}
