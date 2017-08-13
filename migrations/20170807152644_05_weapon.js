@@ -2,13 +2,12 @@ exports.up = function(knex, Promise) {
   return knex.schema.createTable('weapon', (table) =>{
     table.increments();
     table.text('name').notNullable();
-    table.text('type');
-    table.text('subtype');
     table.text('category');
-    table.integer('range');
+    table.integer('range_normal');
+    table.integer('range_long');
     table.integer('cost_value');
     table.text('cost_unit');
-    table.integer('damage_dice');
+    table.integer('damage_dice_count');
     table.integer('damage_dice_value');
     table.integer('weight');
     table.text('url');
