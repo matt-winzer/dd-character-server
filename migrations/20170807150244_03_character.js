@@ -20,6 +20,17 @@ exports.up = function(knex, Promise) {
     table.integer('hp_current');
     table.integer('hp_bonus');
     table.integer('speed');
+    table.integer('initiative');
+    table.integer('armor_class');
+    table.integer('copper');
+    table.integer('silver');
+    table.integer('electrum');
+    table.integer('gold');
+    table.integer('platinum');
+    table.text('personality_traits');
+    table.text('ideals');
+    table.text('bonds');
+    table.text('flaws');
   });
 };
 
