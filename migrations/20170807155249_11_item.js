@@ -5,7 +5,7 @@ exports.up = function(knex, Promise) {
     table.text('category');
     table.integer('cost_value');
     table.text('cost_unit');
-    table.integer('weight');
+    table.float('weight');
     table.text('description');
     table.text('url');
   });

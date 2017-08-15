@@ -8,7 +8,7 @@ exports.up = function(knex, Promise) {
     table.integer('ac_max_bonus');
     table.integer('strength_min');
     table.boolean('stealth_disadvantage').defaultTo(true);
-    table.integer('weight');
+    table.float('weight');
     table.integer('cost_value');
     table.text('cost_unit');
     table.text('url');
