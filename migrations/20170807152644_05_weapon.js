@@ -3,6 +3,7 @@ exports.up = function(knex, Promise) {
     table.increments();
     table.text('name').notNullable();
     table.text('category');
+    table.text('description');
     table.integer('range_normal');
     table.integer('range_long');
     table.integer('cost_value');

@@ -3,6 +3,7 @@ exports.up = function(knex, Promise) {
     table.increments();
     table.text('name').notNullable();
     table.text('category');
+    table.text('description');
     table.integer('ac_base');
     table.boolean('ac_dex_bonus').defaultTo(false);
     table.integer('ac_max_bonus');
