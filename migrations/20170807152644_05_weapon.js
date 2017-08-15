@@ -9,7 +9,7 @@ exports.up = function(knex, Promise) {
     table.text('cost_unit');
     table.integer('damage_dice_count');
     table.integer('damage_dice_value');
-    table.integer('weight');
+    table.float('weight');
     table.text('url');
     table.integer('damage_type_id').references('damage_type.id').unsigned().onDelete('cascade');
   });
