@@ -1,6 +1,6 @@
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex.raw('DELETE FROM "character_ability"; ALTER SEQUENCE character_ability_id_seq RESTART WITH 14;')
+  return knex.raw('DELETE FROM "character_ability"; ALTER SEQUENCE character_ability_id_seq RESTART WITH 7;')
     .then(function () {
       var character_abilities = [
         {
