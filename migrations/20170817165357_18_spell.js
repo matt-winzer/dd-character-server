@@ -8,6 +8,7 @@ exports.up = function(knex, Promise) {
     table.text('concentration');
     table.text('casting_time');
     table.integer('level');
+    table.text('url');
     table.integer('magic_school_id').references('magic_school.id').unsigned().onDelete('cascade');
   });
 };
