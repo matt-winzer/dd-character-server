@@ -16,6 +16,7 @@
     "jsonwebtoken": "^7.4.2",
     "knex": "^0.13.0",
     "morgan": "~1.7.0",
+    "objection": "^0.8.9",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1",
     "pg": "^7.0.2",
