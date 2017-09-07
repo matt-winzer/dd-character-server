@@ -42,6 +42,23 @@ class Character extends Model {
           },
           to: 'armor.id'
         }
+      },
+      items: {
+        relation: Model.ManyToManyRelation,
+        // The related model. This can be either a Model subclass constructor or an
+        // absolute file path to a module that exports one. We use the file path version
+        // here to prevent require loops.
+        modelClass: __dirname + '/Item',
+        join: {
+          from: 'character.id',
+          // ManyToMany relation needs the `through` object to describe the join table.
+          // Join table is character_armor
+          through: {
+            from: 'character_item.character_id',
+            to: 'character_item.item_id'
+          },
+          to: 'item.id'
+        }
       }
     };
   }
