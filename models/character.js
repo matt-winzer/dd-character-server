@@ -52,12 +52,29 @@ class Character extends Model {
         join: {
           from: 'character.id',
           // ManyToMany relation needs the `through` object to describe the join table.
-          // Join table is character_armor
+          // Join table is character_item
           through: {
             from: 'character_item.character_id',
             to: 'character_item.item_id'
           },
           to: 'item.id'
+        }
+      },
+      abilities: {
+        relation: Model.ManyToManyRelation,
+        // The related model. This can be either a Model subclass constructor or an
+        // absolute file path to a module that exports one. We use the file path version
+        // here to prevent require loops.
+        modelClass: __dirname + '/Ability',
+        join: {
+          from: 'character.id',
+          // ManyToMany relation needs the `through` object to describe the join table.
+          // Join table is character_ability
+          through: {
+            from: 'character_ability.character_id',
+            to: 'character_ability.ability_id'
+          },
+          to: 'ability.id'
         }
       }
     };
