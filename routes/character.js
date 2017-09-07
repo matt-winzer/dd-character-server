@@ -6,7 +6,7 @@ const Character = require('../models/Character')
 router.get('/', function(req, res, next) {
   Character
     .query()
-    .eager('weapons')
+    .eager('[weapons, armors]')
     .then(characters => {
       res.json(characters)
     })
