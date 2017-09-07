@@ -14,10 +14,11 @@ class Character extends Model {
         // The related model. This can be either a Model subclass constructor or an
         // absolute file path to a module that exports one. We use the file path version
         // here to prevent require loops.
-        modelClass: __dirname + '/weapon',
+        modelClass: __dirname + '/Weapon',
         join: {
           from: 'character.id',
           // ManyToMany relation needs the `through` object to describe the join table.
+          // Join table is character_weapon
           through: {
             from: 'character_weapon.character_id',
             to: 'character_weapon.weapon_id'

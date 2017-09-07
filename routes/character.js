@@ -1,12 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-const Character = require('../models/character')
-const knex = require('../db/knex')
-
+const Character = require('../models/Character')
 
 router.get('/', function(req, res, next) {
-
   Character
     .query()
     .eager('weapons')
