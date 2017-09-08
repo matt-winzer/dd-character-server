@@ -99,6 +99,14 @@ class Character extends Model {
           },
           to: 'spell.id'
         }
+      },
+      class: {
+        relation: Model.BelongsToOneRelation,
+        modelClass: __dirname + '/Class',
+        join: {
+          from: 'character.class_id',
+          to: 'class.id'
+        }
       }
     };
   }

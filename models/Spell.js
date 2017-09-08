@@ -28,7 +28,7 @@ class Spell extends Model {
       },
       magic_school: {
         relation: Model.BelongsToOneRelation,
-        modelClass: __dirname + '/Magic_school',
+        modelClass: __dirname + '/Magic_School',
         join: {
           from: 'spell.magic_school_id',
           to: 'magic_school.id'
