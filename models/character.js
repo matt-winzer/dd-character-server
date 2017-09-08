@@ -11,13 +11,9 @@ class Character extends Model {
     return {
       weapons: {
         relation: Model.ManyToManyRelation,
-        // The related model. This can be either a Model subclass constructor or an
-        // absolute file path to a module that exports one. We use the file path version
-        // here to prevent require loops.
         modelClass: __dirname + '/Weapon',
         join: {
           from: 'character.id',
-          // ManyToMany relation needs the `through` object to describe the join table.
           // Join table is character_weapon
           through: {
             from: 'character_weapon.character_id',
@@ -28,13 +24,9 @@ class Character extends Model {
       },
       armors: {
         relation: Model.ManyToManyRelation,
-        // The related model. This can be either a Model subclass constructor or an
-        // absolute file path to a module that exports one. We use the file path version
-        // here to prevent require loops.
         modelClass: __dirname + '/Armor',
         join: {
           from: 'character.id',
-          // ManyToMany relation needs the `through` object to describe the join table.
           // Join table is character_armor
           through: {
             from: 'character_armor.character_id',
@@ -45,13 +37,9 @@ class Character extends Model {
       },
       items: {
         relation: Model.ManyToManyRelation,
-        // The related model. This can be either a Model subclass constructor or an
-        // absolute file path to a module that exports one. We use the file path version
-        // here to prevent require loops.
         modelClass: __dirname + '/Item',
         join: {
           from: 'character.id',
-          // ManyToMany relation needs the `through` object to describe the join table.
           // Join table is character_item
           through: {
             from: 'character_item.character_id',
@@ -62,13 +50,9 @@ class Character extends Model {
       },
       abilities: {
         relation: Model.ManyToManyRelation,
-        // The related model. This can be either a Model subclass constructor or an
-        // absolute file path to a module that exports one. We use the file path version
-        // here to prevent require loops.
         modelClass: __dirname + '/Ability',
         join: {
           from: 'character.id',
-          // ManyToMany relation needs the `through` object to describe the join table.
           // Join table is character_ability
           through: {
             from: 'character_ability.character_id',
@@ -79,19 +63,28 @@ class Character extends Model {
       },
       skills: {
         relation: Model.ManyToManyRelation,
-        // The related model. This can be either a Model subclass constructor or an
-        // absolute file path to a module that exports one. We use the file path version
-        // here to prevent require loops.
         modelClass: __dirname + '/Skill',
         join: {
           from: 'character.id',
-          // ManyToMany relation needs the `through` object to describe the join table.
           // Join table is character_skill
           through: {
             from: 'character_skill.character_id',
             to: 'character_skill.skill_id'
           },
           to: 'skill.id'
+        }
+      },
+      proficiencies: {
+        relation: Model.ManyToManyRelation,
+        modelClass: __dirname + '/Proficiency',
+        join: {
+          from: 'character.id',
+          // Join table is character_skill
+          through: {
+            from: 'character_proficiency.character_id',
+            to: 'character_proficiency.proficiency_id'
+          },
+          to: 'proficiency.id'
         }
       }
     };
