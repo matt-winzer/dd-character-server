@@ -79,12 +79,25 @@ class Character extends Model {
         modelClass: __dirname + '/Proficiency',
         join: {
           from: 'character.id',
-          // Join table is character_skill
+          // Join table is character_proficiency
           through: {
             from: 'character_proficiency.character_id',
             to: 'character_proficiency.proficiency_id'
           },
           to: 'proficiency.id'
+        }
+      },
+      spells: {
+        relation: Model.ManyToManyRelation,
+        modelClass: __dirname + '/Spell',
+        join: {
+          from: 'character.id',
+          // Join table is character_spell
+          through: {
+            from: 'character_spell.character_id',
+            to: 'character_spell.spell_id'
+          },
+          to: 'spell.id'
         }
       }
     };
