@@ -25,6 +25,14 @@ class Spell extends Model {
           },
           to: 'character.id'
         }
+      },
+      magic_school: {
+        relation: Model.BelongsToOneRelation,
+        modelClass: __dirname + '/Magic_school',
+        join: {
+          from: 'spell.magic_school_id',
+          to: 'magic_school.id'
+        }
       }
     };
   }
