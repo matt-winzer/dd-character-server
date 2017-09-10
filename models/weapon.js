@@ -34,6 +34,14 @@ class Weapon extends Model {
           },
           to: 'property.id'
         }
+      },
+      damage_type: {
+        relation: Model.BelongsToOneRelation,
+        modelClass: __dirname + '/Damage_Type',
+        join: {
+          from: 'weapon.damage_type_id',
+          to: 'damage_type.id'
+        }
       }
     };
   }
