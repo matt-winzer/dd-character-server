@@ -21,6 +21,7 @@ class Ability extends Model {
           // Join table is character_ability
           through: {
             from: 'character_ability.ability_id',
+            extra: ['value', 'modifier'],
             to: 'character_ability.character_id'
           },
           to: 'character.id'

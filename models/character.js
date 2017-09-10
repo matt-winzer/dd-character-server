@@ -56,6 +56,7 @@ class Character extends Model {
           // Join table is character_ability
           through: {
             from: 'character_ability.character_id',
+            extra: ['value', 'modifier'],
             to: 'character_ability.ability_id'
           },
           to: 'ability.id'
@@ -69,6 +70,7 @@ class Character extends Model {
           // Join table is character_skill
           through: {
             from: 'character_skill.character_id',
+            extra: ['value', 'modifier'],
             to: 'character_skill.skill_id'
           },
           to: 'skill.id'
