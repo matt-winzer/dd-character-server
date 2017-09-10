@@ -115,7 +115,7 @@ class Character extends Model {
         modelClass: __dirname + '/Feature',
         join: {
           from: 'character.id',
-          // Join table is character_spell
+          // Join table is character_feature
           through: {
             from: 'character_feature.character_id',
             to: 'character_feature.feature_id'
@@ -123,6 +123,19 @@ class Character extends Model {
           to: 'feature.id'
         }
       },
+      traits: {
+        relation: Model.ManyToManyRelation,
+        modelClass: __dirname + '/Trait',
+        join: {
+          from: 'character.id',
+          // Join table is character_trait
+          through: {
+            from: 'character_trait.character_id',
+            to: 'character_trait.trait_id'
+          },
+          to: 'trait.id'
+        }
+      }
     };
   }
 }
