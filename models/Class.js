@@ -1,9 +1,9 @@
-const Model = require('objection').Model;
+const Model = require('objection').Model
 
 class Class extends Model {
 
   static get tableName() {
-    return 'class';
+    return 'class'
   }
 
   // This object defines the relations to other models.
