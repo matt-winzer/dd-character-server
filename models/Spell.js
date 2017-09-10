@@ -11,6 +11,7 @@ class Spell extends Model {
     return {
       characters: {
         relation: Model.ManyToManyRelation,
+        modelClass: __dirname + '/Character',
         join: {
           from: 'spell.id',
           // Join table is character_spell

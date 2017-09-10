@@ -11,6 +11,8 @@ class Ability extends Model {
     return {
       characters: {
         relation: Model.ManyToManyRelation,
+        modelClass: __dirname + '/Character',
+        join: {
           from: 'ability.id',
           // Join table is character_ability
           through: {

@@ -11,6 +11,7 @@ class Proficiency extends Model {
     return {
       characters: {
         relation: Model.ManyToManyRelation,
+        modelClass: __dirname + '/Character',
         join: {
           from: 'proficiency.id',
           // Join table is character_proficiency

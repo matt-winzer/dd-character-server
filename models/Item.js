@@ -11,6 +11,7 @@ class Item extends Model {
     return {
       characters: {
         relation: Model.ManyToManyRelation,
+        modelClass: __dirname + '/Character',
         join: {
           from: 'item.id',
           // Join table is character_item

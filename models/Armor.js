@@ -1,9 +1,9 @@
-const Model = require('objection').Model
+const Model = require('objection').Model;
 
 class Armor extends Model {
 
   static get tableName() {
-    return 'armor'
+    return 'armor';
   }
 
   // This object defines the relations to other models.
@@ -11,6 +11,8 @@ class Armor extends Model {
     return {
       characters: {
         relation: Model.ManyToManyRelation,
+        modelClass: __dirname + '/Character',
+        join: {
           from: 'armor.id',
           // Join table is character_armor
           through: {

@@ -11,6 +11,7 @@ class Weapon extends Model {
     return {
       characters: {
         relation: Model.ManyToManyRelation,
+        modelClass: __dirname + '/Character',
         join: {
           from: 'weapon.id',
           // Join table is character_weapon
