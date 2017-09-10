@@ -109,7 +109,20 @@ class Character extends Model {
           from: 'character.class_id',
           to: 'class.id'
         }
-      }
+      },
+      features: {
+        relation: Model.ManyToManyRelation,
+        modelClass: __dirname + '/Feature',
+        join: {
+          from: 'character.id',
+          // Join table is character_spell
+          through: {
+            from: 'character_feature.character_id',
+            to: 'character_feature.feature_id'
+          },
+          to: 'feature.id'
+        }
+      },
     };
   }
 }

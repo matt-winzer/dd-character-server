@@ -16,6 +16,14 @@ class Class extends Model {
           from: 'class.id',
           to: 'character.class_id'
         }
+      },
+      features: {
+        relation: Model.HasManyRelation,
+        modelClass: __dirname + '/Feature',
+        join: {
+          from: 'class.id',
+          to: 'feature.class_id'
+        }
       }
     };
   }
