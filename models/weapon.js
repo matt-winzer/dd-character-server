@@ -21,6 +21,19 @@ class Weapon extends Model {
           },
           to: 'character.id'
         }
+      },
+      properties: {
+        relation: Model.ManyToManyRelation,
+        modelClass: __dirname + '/Property',
+        join: {
+          from: 'weapon.id',
+          // Join table is weapon_property
+          through: {
+            from: 'weapon_property.weapon_id',
+            to: 'weapon_property.property_id'
+          },
+          to: 'property.id'
+        }
       }
     };
   }
