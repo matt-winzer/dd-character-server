@@ -9,6 +9,14 @@ class Character extends Model {
   // This object defines the relations to other models.
   static get relationMappings() {
     return {
+      player: {
+        relation: Model.BelongsToOneRelation,
+        modelClass: __dirname + '/Player',
+        join: {
+          from: 'character.player_id',
+          to: 'player.id'
+        }
+      },
       weapons: {
         relation: Model.ManyToManyRelation,
         modelClass: __dirname + '/Weapon',
