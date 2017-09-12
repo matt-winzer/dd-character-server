@@ -4,6 +4,7 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const index = require('./routes/index');
 const character = require('./routes/character')
@@ -102,7 +103,7 @@ app.get('/auth/facebook/callback', (req, res, next) => {
 
 
 
-
+app.use(cors())
 
 
 // view engine setup
