@@ -9,6 +9,7 @@ const cors = require('cors')
 const index = require('./routes/index')
 const character = require('./routes/character')
 const armor = require('./routes/armor')
+const item = require('./routes/item')
 
 const app = express()
 
@@ -122,6 +123,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/', index)
 app.use('/character', character)
 app.use('/armor', armor)
+app.use('/item', item)
 
 
 // catch 404 and forward to error handler
