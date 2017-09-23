@@ -10,6 +10,7 @@ const index = require('./routes/index')
 const character = require('./routes/character')
 const armor = require('./routes/armor')
 const item = require('./routes/item')
+const weapon = require('./routes/weapon')
 
 const app = express()
 
@@ -124,6 +125,7 @@ app.use('/', index)
 app.use('/character', character)
 app.use('/armor', armor)
 app.use('/item', item)
+app.use('/weapon', weapon)
 
 
 // catch 404 and forward to error handler
