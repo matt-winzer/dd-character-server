@@ -1,5 +1,8 @@
 var express = require('express');
 var router = express.Router();
+const Character = require('../models/character')
+
+const knex = require('../db/knex')
 
 
 /* GET home page. */
