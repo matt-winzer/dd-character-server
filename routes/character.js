@@ -2,8 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 const Character = require('../models/Character')
-const Skill = require('../models/Skill')
-const Weapon = require('../models/Weapon')
+const Character_Ability = require('../models/Character_Ability')
+
+
+// CHARACTER ROUTES
 
 router.get('/', function(req, res, next) {
   Character
@@ -31,6 +33,7 @@ router.get('/:id', function(req, res, next) {
     })
 });
 
+
 router.put('/:id', function(req, res, next) {
   const id = req.params.id
 
@@ -38,6 +41,36 @@ router.put('/:id', function(req, res, next) {
     .query()
     .patch(req.body)
     .where('id', id)
+    .returning('*')
+    .then(editedItem => {
+      res.status(200).json(editedItem)
+    })
+    .catch(err => {
+      console.log(err.stack)
+    })
+})
+
+// CHARACTER ABILITY ROUTES
+
+router.get('/:id/ability', function(req, res, next) {
+  Character_Ability
+    .query()
+    .where('character_id', req.params.id)
+    .eager('ability')
+    .then(characters => {
+      res.json(characters)
+    })
+});
+
+router.put('/:id/ability/:abilityId', function(req, res, next) {
+  const id = req.params.id
+  const abilityId = req.params.abilityId
+
+  Character_Ability
+    .query()
+    .patch(req.body)
+    .where('character_id', id)
+    .andWhere('ability_id', abilityId)
     .returning('*')
     .then(editedItem => {
       res.status(200).json(editedItem)
