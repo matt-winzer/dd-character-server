@@ -8,6 +8,7 @@ const cors = require('cors')
 
 const index = require('./routes/index')
 const character = require('./routes/character')
+const character_ability = require('./routes/character_ability')
 const armor = require('./routes/armor')
 const item = require('./routes/item')
 const weapon = require('./routes/weapon')
@@ -123,10 +124,10 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', index)
 app.use('/character', character)
+app.use('/character/:id/ability', character_ability)
 app.use('/armor', armor)
 app.use('/item', item)
 app.use('/weapon', weapon)
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
