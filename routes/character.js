@@ -31,4 +31,20 @@ router.get('/:id', function(req, res, next) {
     })
 });
 
+router.put('/:id', function(req, res, next) {
+  const id = req.params.id
+
+  Character
+    .query()
+    .patch(req.body)
+    .where('id', id)
+    .returning('*')
+    .then(editedItem => {
+      res.status(200).json(editedItem)
+    })
+    .catch(err => {
+      console.log(err.stack)
+    })
+})
+
 module.exports = router;
