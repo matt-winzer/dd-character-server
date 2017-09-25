@@ -1,11 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const Character = require('../models/Character')
-const Skill = require('../models/Skill')
-const Weapon = require('../models/Weapon')
 const Armor = require('../models/Armor')
-
 
 router.get('/', function(req, res, next) {
   Armor
@@ -31,12 +27,10 @@ router.get('/:id', function(req, res, next) {
 });
 
 router.put('/:id', function(req, res, next) {
-  const id = req.params.id
-
   Armor
     .query()
     .patch(req.body)
-    .where('id', id)
+    .where('id', req.params.id)
     .returning('*')
     .then(editedArmor => {
       res.status(200).json(editedArmor)

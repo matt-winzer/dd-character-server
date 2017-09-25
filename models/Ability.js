@@ -22,6 +22,14 @@ class Ability extends Model {
           },
           to: 'character.id'
         }
+      },
+      skills: {
+        relation: Model.HasManyRelation,
+        modelClass: __dirname + '/Skill',
+        join: {
+          from: 'ability.id',
+          to: 'skill.ability_id'
+        }
       }
     };
   }

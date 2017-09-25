@@ -2,16 +2,16 @@ const express = require('express');
 const router = express.Router();
 
 const Character = require('../models/Character')
-const Skill = require('../models/Skill')
-const Weapon = require('../models/Weapon')
 
 router.get('/', function(req, res, next) {
   Character
     .query()
-    .eager('[player, weapons, weapons.properties, weapons.damage_type, armors, items, abilities, skills, proficiencies, spells, spells.magic_school, class, features, features.class, traits]')
+    .eager('[player, weapons, weapons.properties, weapons.damage_type, armors, items, abilities, skills, skills.ability, proficiencies, spells, spells.magic_school, class, features, features.class, traits]')
     .modifyEager('spells.magic_school', builder => {
-      // Only select 'name' column of magic_school table
       builder.select('name');
+    })
+    .modifyEager('skills.ability', builder => {
+      builder.select('full_name');
     })
     .then(characters => {
       res.json(characters)
@@ -19,7 +19,7 @@ router.get('/', function(req, res, next) {
     .catch(err => {
       console.log(err.stack)
     })
-});
+})
 
 router.get('/:id', function(req, res, next) {
   Character
@@ -31,13 +31,12 @@ router.get('/:id', function(req, res, next) {
     })
 });
 
-router.put('/:id', function(req, res, next) {
-  const id = req.params.id
 
+router.put('/:id', function(req, res, next) {
   Character
     .query()
     .patch(req.body)
-    .where('id', id)
+    .where('id', req.params.id)
     .returning('*')
     .then(editedItem => {
       res.status(200).json(editedItem)
