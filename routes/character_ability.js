@@ -39,4 +39,4 @@ router.put('/:abilityId', function(req, res, next) {
     })
 })
 
-module.exports = router;
+module.exports = router

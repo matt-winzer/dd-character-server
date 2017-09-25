@@ -1,5 +1,5 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
 
 const Armor = require('../models/Armor')
 
@@ -40,4 +40,4 @@ router.put('/:id', function(req, res, next) {
     })
 })
 
-module.exports = router;
+module.exports = router
