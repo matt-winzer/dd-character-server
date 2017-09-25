@@ -8,6 +8,7 @@ router.get('/', function(req, res, next) {
     .query()
     .where('character_id', req.params.id)
     .eager('ability')
+    .orderBy('ability_id')
     .then(abilities => {
       res.json(abilities)
     })
