@@ -2,7 +2,7 @@
   "name": "dd-character-server",
   "version": "0.0.0",
   "private": true,
-  "main": "app.js",
+  "main": "./bin/www",
   "scripts": {
     "start": "node ./bin/www"
   },
