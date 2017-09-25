@@ -8,10 +8,11 @@ router.get('/', function(req, res, next) {
     .query()
     .eager('[player, weapons, weapons.properties, weapons.damage_type, armors, items, abilities, skills, skills.ability, proficiencies, spells, spells.magic_school, class, features, features.class, traits]')
     .modifyEager('spells.magic_school', builder => {
-      builder.select('name');
+      builder.select('name')
     })
     .modifyEager('skills.ability', builder => {
-      builder.select('full_name');
+      builder.select('full_name')
+      builder.orderBy('id')
     })
     .then(characters => {
       res.json(characters)
