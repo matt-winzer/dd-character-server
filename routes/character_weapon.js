@@ -38,4 +38,16 @@ router.post('/', function(req, res, next) {
     })
 })
 
+router.delete('/:weaponId', function(req, res, next) {
+  Character_Weapon
+    .query()
+    .where('character_id', req.params.id)
+    .andWhere('weapon_id', req.params.weaponId)
+    .delete()
+    .returning('*')
+    .then(weapon => {
+      res.json(weapon)
+    })
+});
+
 module.exports = router
